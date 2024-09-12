@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(navy, rgb(0, 110, 255), rgb(0, 174, 255));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tic_tac_toe {
+    background-color: white;
+    width: 200px;
+    height: 199px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.box {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 50px;
+}
+
+.pass {
+    background-color: white;
+    /* width: 150px; */
+    height: 30px;
+    font-size: 20px;
+}
+
+.btn {
+    width: 50px;
+    height: 20px;
+    background-color: gray;
+    border-radius: 40px;
+    position: relative;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    margin: 2px 5px;
+    width: 15px;
+    height: 15px;
+    transition: all 0.2s linear;
+}
+
+.toggle {
+    display: flex;
+}
+
+#check:checked+.btn {
+    background-color: rgba(0, 0, 255, 0.856);
+}
+
+#check:checked+.btn::before {
+    transform: translateX(25px);
+}
+
+#check {
+    display: none;
+}
+
+.mode {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: fit-content;
+    background-color: white;
+    gap: 20px;
+    padding: 0 20px;
+    border: 2px solid black;
+}
