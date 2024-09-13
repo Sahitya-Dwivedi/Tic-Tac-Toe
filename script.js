@@ -1,11 +1,10 @@
-let box = document.getElementsByClassName("box");
+let box = document.querySelectorAll(".box");
 let toggle = true;
 let check = document.querySelector("#check");
 let checked = false;
 
 check.addEventListener("change", (e) => {
   e.target.checked ? (checked = true) : (checked = false);
-  console.log(checked);
 });
 
 for (let i = 0; i < box.length; i++) {
@@ -21,6 +20,59 @@ for (let i = 0; i < box.length; i++) {
         box[i].textContent = "O";
         toggle = !toggle;
       }
+      if (box[i].textContent == "X" || "O") {
+        setTimeout(() => {
+          winner();
+        }, 50);
+      }
     }
   });
+}
+
+function winner() {
+  if ((box[0].textContent == box[1].textContent && box[1].textContent == box[2].textContent) && box[0].textContent != "") {
+    alert("you won")
+    reset()
+  }
+  else if ((box[3].textContent == box[4].textContent && box[4].textContent == box[5].textContent) && box[3].textContent != "") {
+    alert("you won")
+    reset()
+  }
+  else if ((box[6].textContent == box[7].textContent && box[7].textContent == box[8].textContent) && box[6].textContent != "") {
+    alert("you won")
+    reset()
+  }
+  else if ((box[0].textContent == box[3].textContent && box[3].textContent == box[6].textContent) && box[0].textContent != "") {
+    alert("you won")
+    reset()
+  }
+  else if ((box[1].textContent == box[4].textContent && box[4].textContent == box[7].textContent) && box[1].textContent != "") {
+    alert("you won")
+    reset()
+  }
+  else if ((box[2].textContent == box[5].textContent && box[5].textContent == box[8].textContent) && box[2].textContent != "") {
+    alert("you won")
+    reset()
+  }
+  else if ((box[0].textContent == box[4].textContent && box[4].textContent == box[8].textContent) && box[0].textContent != "") {
+    alert("you won")
+    reset()
+  }
+  else if ((box[2].textContent == box[4].textContent && box[4].textContent == box[6].textContent) && box[2].textContent != "") {
+    alert("you won")
+    reset()
+  }
+  let draw = 0
+  box.forEach(v => v.textContent != "" ? draw++ : "")
+  if (draw == 9) {
+    alert("draw")
+    reset()
+  }
+}
+
+function reset() {
+  for (let index = 0; index < box.length; index++) {
+    const element = box[index];
+    element.textContent = ""
+  }
 }
