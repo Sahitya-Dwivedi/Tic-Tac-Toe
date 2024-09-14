@@ -2,7 +2,8 @@ let box = document.querySelectorAll(".box");
 let toggle = true;
 let check = document.querySelector("#check");
 let checked = false;
-
+let whoTurn = document.querySelector(".whoTurn")
+whoTurn.textContent = "X"
 check.addEventListener("change", (e) => {
   e.target.checked ? (checked = true) : (checked = false);
 });
@@ -15,9 +16,11 @@ for (let i = 0; i < box.length; i++) {
       }
       if (toggle) {
         box[i].textContent = "X";
+        whoTurn.textContent = "O"
         toggle = !toggle;
       } else {
         box[i].textContent = "O";
+        whoTurn.textContent = "X"
         toggle = !toggle;
       }
       if (box[i].textContent == "X" || "O") {

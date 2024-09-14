@@ -82,3 +82,16 @@ body {
     padding: 0 20px;
     border: 2px solid black;
 }
+
+h2{
+    font-weight: lighter;
+}
+
+.turn{
+    border: 2px solid black;
+    width: 200px;
+    background-color: yellow;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
