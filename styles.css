@@ -32,7 +32,7 @@ body {
 
 .pass {
     background-color: white;
-    /* width: 150px; */
+    width: 110px;
     height: 30px;
     font-size: 20px;
 }
@@ -60,17 +60,25 @@ body {
     display: flex;
 }
 
-#check:checked+.btn {
+#check:checked+.btn,
+#checkComp:checked+.btn {
     background-color: rgba(0, 0, 255, 0.856);
 }
 
-#check:checked+.btn::before {
+#check:checked+.btn::before,
+#checkComp:checked+.btn::before {
     transform: translateX(25px);
 }
 
-#check {
+#check,
+#checkComp {
     display: none;
 }
+
+/* {
+    background-color: rgba(0, 0, 255, 0.856);
+
+} */
 
 .mode {
     display: flex;
@@ -83,11 +91,11 @@ body {
     border: 2px solid black;
 }
 
-h2{
+h2 {
     font-weight: lighter;
 }
 
-.turn{
+.turn {
     border: 2px solid black;
     width: 200px;
     background-color: yellow;
