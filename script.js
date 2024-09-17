@@ -23,56 +23,89 @@ function winner() {
     box[1].textContent == box[2].textContent &&
     box[0].textContent != ""
   ) {
-    alert("you won");
+    if (box[0].textContent == "X") {
+      alert("X won");
+    } else {
+      alert("O won")
+    }
+    reset()
     reset();
   } else if (
     box[3].textContent == box[4].textContent &&
     box[4].textContent == box[5].textContent &&
     box[3].textContent != ""
   ) {
-    alert("you won");
+    if (box[3].textContent == "X") {
+      alert("X won");
+    } else {
+      alert("O won")
+    }
     reset();
   } else if (
     box[6].textContent == box[7].textContent &&
     box[7].textContent == box[8].textContent &&
     box[6].textContent != ""
   ) {
-    alert("you won");
+    if (box[6].textContent == "X") {
+      alert("X won");
+    } else {
+      alert("O won")
+    }
     reset();
   } else if (
     box[0].textContent == box[3].textContent &&
     box[3].textContent == box[6].textContent &&
     box[0].textContent != ""
   ) {
-    alert("you won");
+    if (box[0].textContent == "X") {
+      alert("X won");
+    } else {
+      alert("O won")
+    }
     reset();
   } else if (
     box[1].textContent == box[4].textContent &&
     box[4].textContent == box[7].textContent &&
     box[1].textContent != ""
   ) {
-    alert("you won");
+    if (box[1].textContent == "X") {
+      alert("X won");
+    } else {
+      alert("O won")
+    }
     reset();
   } else if (
     box[2].textContent == box[5].textContent &&
     box[5].textContent == box[8].textContent &&
     box[2].textContent != ""
   ) {
-    alert("you won");
+    if (box[2].textContent == "X") {
+      alert("X won");
+    } else {
+      alert("O won")
+    }
     reset();
   } else if (
     box[0].textContent == box[4].textContent &&
     box[4].textContent == box[8].textContent &&
     box[0].textContent != ""
   ) {
-    alert("you won");
+    if (box[0].textContent == "X") {
+      alert("X won");
+    } else {
+      alert("O won")
+    }
     reset();
   } else if (
     box[2].textContent == box[4].textContent &&
     box[4].textContent == box[6].textContent &&
     box[2].textContent != ""
   ) {
-    alert("you won");
+    if (box[2].textContent == "X") {
+      alert("X won");
+    } else {
+      alert("O won")
+    }
     reset();
   }
   let draw = 0;
@@ -84,10 +117,7 @@ function winner() {
 }
 
 function reset() {
-  for (let index = 0; index < box.length; index++) {
-    const element = box[index];
-    element.textContent = "";
-  }
+  window.location.reload()
 }
 
 function PassPlay(i) {
@@ -127,36 +157,39 @@ function vsComputer(val) {
     return;
   }
   val.textContent = "X";
-  whoTurn.textContent = "O";
-  if (movecount == 0) {
-    if (box[4].textContent == "") {
-      box[4].textContent = "O";
-    } else {
-      let ran = Math.random();
-      if (ran < 0.25) {
-        box[0].textContent = "O";
-      } else if (ran > 0.25 && ran < 0.5) {
-        box[2].textContent = "O";
-      } else if (ran > 0.5 && ran < 0.75) {
-        box[6].textContent = "O";
-      } else if (ran > 0.75 && ran < 1) {
-        box[8].textContent = "O";
+  whoTurn.textContent = "Computer(O)";
+  setTimeout(() => {
+    if (movecount == 0) {
+      if (box[4].textContent == "") {
+        box[4].textContent = "O";
+      } else {
+        let ran = Math.random();
+        if (ran < 0.25) {
+          box[0].textContent = "O";
+        } else if (ran > 0.25 && ran < 0.5) {
+          box[2].textContent = "O";
+        } else if (ran > 0.5 && ran < 0.75) {
+          box[6].textContent = "O";
+        } else if (ran > 0.75 && ran < 1) {
+          box[8].textContent = "O";
+        }
       }
+      movecount++;
+    } else if (movecount == 1) {
+      checkWinner();
     }
-    movecount++;
-  } else if (movecount == 1) {
-    checkWinner();
-  }
+    whoTurn.textContent = "Your Turn(X)"
+  }, 500);
   setTimeout(() => {
     winner();
-  }, 50);
+  }, 500 + 50);
 }
 
 function checkWinner() {
   if (
-    (box[0].textContent == box[1].textContent && box[2].textContent == "") ||
-    (box[0].textContent == box[2].textContent && box[1].textContent == "") ||
-    (box[2].textContent == box[1].textContent && box[0].textContent == "")
+    (box[0].textContent == "O" && box[1].textContent == "O" && box[2].textContent == "") ||
+    (box[0].textContent == "O" && box[2].textContent == "O" && box[1].textContent == "") ||
+    (box[2].textContent == "O" && box[1].textContent == "O" && box[0].textContent == "")
   ) {
     if (box[0].textContent == "") {
       box[0].textContent = "O";
@@ -166,9 +199,9 @@ function checkWinner() {
       box[2].textContent = "O";
     }
   } else if (
-    (box[0].textContent == box[3].textContent && box[6].textContent == "") ||
-    (box[0].textContent == box[6].textContent && box[3].textContent == "") ||
-    (box[3].textContent == box[6].textContent && box[0].textContent == "")
+    (box[0].textContent == "O" && box[3].textContent == "O" && box[6].textContent == "") ||
+    (box[0].textContent == "O" && box[6].textContent == "O" && box[3].textContent == "") ||
+    (box[3].textContent == "O" && box[6].textContent == "O" && box[0].textContent == "")
   ) {
     if (box[0].textContent == "") {
       box[0].textContent = "O";
@@ -178,9 +211,9 @@ function checkWinner() {
       box[6].textContent = "O";
     }
   } else if (
-    (box[0].textContent == box[4].textContent && box[8].textContent == "") ||
-    (box[0].textContent == box[8].textContent && box[4].textContent == "") ||
-    (box[4].textContent == box[8].textContent && box[0].textContent == "")
+    (box[0].textContent == "O" && box[4].textContent == "O" && box[8].textContent == "") ||
+    (box[0].textContent == "O" && box[8].textContent == "O" && box[4].textContent == "") ||
+    (box[4].textContent == "O" && box[8].textContent == "O" && box[0].textContent == "")
   ) {
     if (box[0].textContent == "") {
       box[0].textContent = "O";
@@ -190,9 +223,9 @@ function checkWinner() {
       box[8].textContent = "O";
     }
   } else if (
-    (box[2].textContent == box[5].textContent && box[8].textContent == "") ||
-    (box[2].textContent == box[8].textContent && box[5].textContent == "") ||
-    (box[5].textContent == box[8].textContent && box[2].textContent == "")
+    (box[2].textContent == "O" && box[5].textContent == "O" && box[8].textContent == "") ||
+    (box[2].textContent == "O" && box[8].textContent == "O" && box[5].textContent == "") ||
+    (box[5].textContent == "O" && box[8].textContent == "O" && box[2].textContent == "")
   ) {
     if (box[2].textContent == "") {
       box[2].textContent = "O";
@@ -203,9 +236,9 @@ function checkWinner() {
     }
   }
   else if (
-    (box[2].textContent == box[4].textContent && box[6].textContent == "") ||
-    (box[2].textContent == box[6].textContent && box[4].textContent == "") ||
-    (box[4].textContent == box[6].textContent && box[2].textContent == "")
+    (box[2].textContent == "O" && box[4].textContent == "O" && box[6].textContent == "") ||
+    (box[2].textContent == "O" && box[6].textContent == "O" && box[4].textContent == "") ||
+    (box[4].textContent == "O" && box[6].textContent == "O" && box[2].textContent == "")
   ) {
     if (box[2].textContent == "") {
       box[2].textContent = "O";
@@ -216,9 +249,9 @@ function checkWinner() {
     }
   }
   else if (
-    (box[6].textContent == box[7].textContent && box[8].textContent == "") ||
-    (box[6].textContent == box[8].textContent && box[7].textContent == "") ||
-    (box[7].textContent == box[8].textContent && box[6].textContent == "")
+    (box[6].textContent == "O" && box[7].textContent == "O" && box[8].textContent == "") ||
+    (box[6].textContent == "O" && box[8].textContent == "O" && box[7].textContent == "") ||
+    (box[7].textContent == "O" && box[8].textContent == "O" && box[6].textContent == "")
   ) {
     if (box[6].textContent == "") {
       box[6].textContent = "O";
@@ -229,9 +262,9 @@ function checkWinner() {
     }
   }
   else if (
-    (box[1].textContent == box[4].textContent && box[7].textContent == "") ||
-    (box[1].textContent == box[7].textContent && box[4].textContent == "") ||
-    (box[4].textContent == box[7].textContent && box[1].textContent == "")
+    (box[1].textContent == "O" && box[4].textContent == "O" && box[7].textContent == "") ||
+    (box[1].textContent == "O" && box[7].textContent == "O" && box[4].textContent == "") ||
+    (box[4].textContent == "O" && box[7].textContent == "O" && box[1].textContent == "")
   ) {
     if (box[1].textContent == "") {
       box[1].textContent = "O";
@@ -242,9 +275,9 @@ function checkWinner() {
     }
   }
   else if (
-    (box[3].textContent == box[4].textContent && box[5].textContent == "") ||
-    (box[3].textContent == box[5].textContent && box[4].textContent == "") ||
-    (box[4].textContent == box[5].textContent && box[3].textContent == "")
+    (box[3].textContent == "O" && box[4].textContent == "O" && box[5].textContent == "") ||
+    (box[3].textContent == "O" && box[5].textContent == "O" && box[4].textContent == "") ||
+    (box[4].textContent == "O" && box[5].textContent == "O" && box[3].textContent == "")
   ) {
     if (box[3].textContent == "") {
       box[3].textContent = "O";
@@ -252,6 +285,124 @@ function checkWinner() {
       box[4].textContent = "O";
     } else {
       box[5].textContent = "O";
+    }
+  }
+  else if (
+    (box[0].textContent == "X" && box[1].textContent == "X" && box[2].textContent == "") ||
+    (box[0].textContent == "X" && box[2].textContent == "X" && box[1].textContent == "") ||
+    (box[2].textContent == "X" && box[1].textContent == "X" && box[0].textContent == "")
+  ) {
+    if (box[0].textContent == "") {
+      box[0].textContent = "O";
+    } else if (box[1].textContent == "") {
+      box[1].textContent = "O";
+    } else {
+      box[2].textContent = "O";
+    }
+
+  } else if (
+    (box[0].textContent == "X" && box[3].textContent == "X" && box[6].textContent == "") ||
+    (box[0].textContent == "X" && box[6].textContent == "X" && box[3].textContent == "") ||
+    (box[3].textContent == "X" && box[6].textContent == "X" && box[0].textContent == "")
+  ) {
+    if (box[0].textContent == "") {
+      box[0].textContent = "O";
+    } else if (box[3].textContent == "") {
+      box[3].textContent = "O";
+    } else {
+      box[6].textContent = "O";
+    }
+  } else if (
+    (box[0].textContent == "X" && box[4].textContent == "X" && box[8].textContent == "") ||
+    (box[0].textContent == "X" && box[8].textContent == "X" && box[4].textContent == "") ||
+    (box[4].textContent == "X" && box[8].textContent == "X" && box[0].textContent == "")
+  ) {
+    if (box[0].textContent == "") {
+      box[0].textContent = "O";
+    } else if (box[4].textContent == "") {
+      box[4].textContent = "O";
+    } else {
+      box[8].textContent = "O";
+    }
+
+  } else if (
+    (box[2].textContent == "X" && box[5].textContent == "X" && box[8].textContent == "") ||
+    (box[2].textContent == "X" && box[8].textContent == "X" && box[5].textContent == "") ||
+    (box[5].textContent == "X" && box[8].textContent == "X" && box[2].textContent == "")
+  ) {
+    if (box[2].textContent == "") {
+      box[2].textContent = "O";
+    } else if (box[5].textContent == "") {
+      box[5].textContent = "O";
+    } else {
+      box[8].textContent = "O";
+    }
+
+  }
+  else if (
+    (box[2].textContent == "X" && box[4].textContent == "X" && box[6].textContent == "") ||
+    (box[2].textContent == "X" && box[6].textContent == "X" && box[4].textContent == "") ||
+    (box[4].textContent == "X" && box[6].textContent == "X" && box[2].textContent == "")
+  ) {
+    if (box[2].textContent == "") {
+      box[2].textContent = "O";
+    } else if (box[4].textContent == "") {
+      box[4].textContent = "O";
+    } else {
+      box[6].textContent = "O";
+    }
+  }
+  else if (
+    (box[6].textContent == "X" && box[7].textContent == "X" && box[8].textContent == "") ||
+    (box[6].textContent == "X" && box[8].textContent == "X" && box[7].textContent == "") ||
+    (box[7].textContent == "X" && box[8].textContent == "X" && box[6].textContent == "")
+  ) {
+    if (box[6].textContent == "") {
+      box[6].textContent = "O";
+    } else if (box[7].textContent == "") {
+      box[7].textContent = "O";
+    } else {
+      box[8].textContent = "O";
+    }
+  }
+  else if (
+    (box[1].textContent == "X" && box[4].textContent == "X" && box[7].textContent == "") ||
+    (box[1].textContent == "X" && box[7].textContent == "X" && box[4].textContent == "") ||
+    (box[4].textContent == "X" && box[7].textContent == "X" && box[1].textContent == "")
+  ) {
+    if (box[1].textContent == "") {
+      box[1].textContent = "O";
+    } else if (box[4].textContent == "") {
+      box[4].textContent = "O";
+    } else {
+      box[7].textContent = "O";
+    }
+  }
+  else if (
+    (box[3].textContent == "X" && box[4].textContent == "X" && box[5].textContent == "") ||
+    (box[3].textContent == "X" && box[5].textContent == "X" && box[4].textContent == "") ||
+    (box[4].textContent == "X" && box[5].textContent == "X" && box[3].textContent == "")
+  ) {
+    if (box[3].textContent == "") {
+      box[3].textContent = "O";
+    } else if (box[4].textContent == "") {
+      box[4].textContent = "O";
+    } else {
+      box[5].textContent = "O";
+    }
+  } else {
+    let ran = Math.random()
+    if (ran < 0.25) {
+      box[5].textContent = "O"
+    }
+    else if (ran < 0.5 && ran > 0.25) {
+      box[3].textContent = "O"
+    }
+    else if (ran < 0.75 && ran > 0.5) {
+      box[7].textContent = "O"
+    }
+    else {
+      box[1].textContent = "O"
     }
   }
 }
