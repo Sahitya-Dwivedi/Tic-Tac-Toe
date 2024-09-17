@@ -1,10 +1,9 @@
 let box = document.querySelectorAll(".box");
-let toggle = true;
 let check = document.querySelector("#check");
-let checked = false;
-let checkedComp = false;
 let whoTurn = document.querySelector(".whoTurn");
 let checkComp = document.querySelector("#checkComp");
+let toggle = true;
+let checked = false;
 let movecount = 0;
 whoTurn.textContent = "X";
 
@@ -117,7 +116,11 @@ function winner() {
 }
 
 function reset() {
-  window.location.reload()
+  toggle = true;
+  checked = false;
+  movecount = 0;
+  whoTurn.textContent = "X";
+  box.forEach(val => val.textContent = "")
 }
 
 function PassPlay(i) {
@@ -392,17 +395,27 @@ function checkWinner() {
     }
   } else {
     let ran = Math.random()
-    if (ran < 0.25) {
+    if (ran < 0.25 && box[5].textContent == "") {
       box[5].textContent = "O"
     }
-    else if (ran < 0.5 && ran > 0.25) {
+    else if (ran < 0.5 && ran > 0.25 && box[3].textContent == "") {
       box[3].textContent = "O"
     }
-    else if (ran < 0.75 && ran > 0.5) {
+    else if (ran < 0.75 && ran > 0.5 && box[7].textContent == "") {
       box[7].textContent = "O"
     }
-    else {
+    else if (ran < 1 && ran > 0.75 && box[1].textContent == "") {
       box[1].textContent = "O"
+    } else {
+      if (box[5].textContent == "") {
+        box[5].textContent = "O"
+      } else if (box[3].textContent == "") {
+        box[3].textContent == "O"
+      } else if (box[7].textContent == "") {
+        box[7].textContent == "O"
+      } else if (box[1].textContent == "") {
+        box[7].textContent == "O"
+      }
     }
   }
 }
