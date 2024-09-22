@@ -5,9 +5,12 @@
 
 html,
 body {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-image: linear-gradient(navy, rgb(0, 110, 255), rgb(0, 174, 255));
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tic_tac_toe {
@@ -123,4 +126,10 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width:662px) {
+    .score{
+        gap: 0px;
+    }
 }
