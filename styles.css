@@ -8,11 +8,6 @@ body {
     width: 100%;
     height: 100%;
     background-image: linear-gradient(navy, rgb(0, 110, 255), rgb(0, 174, 255));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
 }
 
 .tic_tac_toe {
@@ -74,12 +69,6 @@ body {
 #checkComp {
     display: none;
 }
-
-/* {
-    background-color: rgba(0, 0, 255, 0.856);
-
-} */
-
 .mode {
     display: flex;
     justify-content: space-between;
@@ -101,5 +90,37 @@ h2 {
     background-color: yellow;
     display: flex;
     justify-content: left;
+    align-items: center;
+}
+
+.score{
+    width: 100vw;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    gap: 500px;
+}
+
+.game{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 20px;
+}
+
+.player{
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
