@@ -12,16 +12,23 @@ let reference = [];
 whoTurn.textContent = "X";
 
 check.addEventListener("change", (e) => {
-  e.target.checked ? boxTapping() : (reset());
+  e.target.checked ? boxTapping() : (resetMode(), reset());
 });
 checkComp.addEventListener("change", (e) => {
-  e.target.checked ? computer() : (reset());
+  e.target.checked ? computer() : (resetMode(), reset());
 });
+
 function reset() {
   toggle = true;
   checked = false;
   movecount = 0;
   whoTurn.textContent = "X";
+  box.forEach(val=> val.textContent = "");
+}
+
+function resetMode() {
+  X.textContent = 0;
+  O.textContent = 0;
   box.forEach((val, i) => {
     val.textContent = "";
     box[i].removeEventListener("click", reference[i]);
@@ -30,6 +37,9 @@ function reset() {
 }
 
 function PassPlay(i) {
+  if (box[i].textContent != "") {
+    return;
+  }
   if (toggle) {
     box[i].textContent = "X";
     whoTurn.textContent = "O";
@@ -48,7 +58,7 @@ function PassPlay(i) {
 function computer() {
   box.forEach((val) => {
     let tempReference = () => vsComputer(val)
-    val.addEventListener("click", tempReference, { once: true });
+    val.addEventListener("click", tempReference);
     reference.push(tempReference);
   });
 }
@@ -56,12 +66,15 @@ function computer() {
 function boxTapping() {
   for (let i = 0; i < box.length; i++) {
     let tempReference = () => PassPlay(i);
-    box[i].addEventListener("click", tempReference, { once: true });
+    box[i].addEventListener("click", tempReference);
     reference.push(tempReference);
   }
 }
 
 function vsComputer(val) {
+  if (val.textContent != "") {
+    return;
+  }
   val.textContent = "X";
   whoTurn.textContent = "Computer(O)";
   setTimeout(() => {
